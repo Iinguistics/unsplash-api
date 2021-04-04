@@ -20,8 +20,7 @@ export default {
   },
   methods: {
     
-   async fetchRandomPhotos(){
-     
+   async fetchSearchTermPhotos(){
       const {data} = await axios.get('https://api.unsplash.com/search/photos?', {
         params:{
           query: 'london',
@@ -29,10 +28,24 @@ export default {
         }
       });
       this.myTest = data.results;
-    }
+    },
+
+
+    async fetchRandomPhotos(){
+      const {data} = await axios.get('https://api.unsplash.com/photos', {
+        params:{
+          client_id: key,
+          per_page: 12
+        }
+      });
+      this.myTest = data;
+    },
+
+
   },
   mounted(){
-    this.fetchRandomPhotos();
+    //this.fetchSearchTermPhotos();
+    //this.fetchRandomPhotos();
     console.log(this.myTest)
   },
   updated(){
