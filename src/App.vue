@@ -1,9 +1,11 @@
 <template>
+   <Search />
   <Home :test= myTest />
 </template>
 
 <script>
 import Home from './components/Home.vue'
+import Search from './components/Search'
 import axios from 'axios'
 import { key } from '../src/unsplashKey'
 
@@ -16,7 +18,8 @@ export default {
     }
   },
   components: {
-    Home
+    Home,
+    Search
   },
   methods: {
     
