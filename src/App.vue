@@ -5,6 +5,7 @@
 <script>
 import Home from './components/Home.vue'
 import axios from 'axios'
+import { key } from '../src/unsplashKey'
 
 export default {
   name: 'App',
@@ -24,10 +25,10 @@ export default {
       const {data} = await axios.get('https://api.unsplash.com/search/photos?', {
         params:{
           query: 'london',
-          client_id: 'HPm13HgLp3IvxRUTJlllbzDN_SlCOcbOBnwJyJIA7g4'
+          client_id: key
         }
       });
-      this.myTest = data;
+      this.myTest = data.results;
     }
   },
   mounted(){
@@ -35,7 +36,7 @@ export default {
     console.log(this.myTest)
   },
   updated(){
-    console.log(this.myTest.results);
+    console.log(this.myTest);
   }
 
   
@@ -54,6 +55,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  font-family: 'Arimo', sans-serif;
 }
 </style>
 
