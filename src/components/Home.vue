@@ -2,7 +2,7 @@
     <div class="container">
         search component 
         <div class="randomPhotosGrid mt-5">
-             <img :key="item.id" v-for="item in test" :src="item.urls.regular"  class="grid-item"/> 
+             <img :key="item.id" v-for="item in test" :src="item.urls.regular"  class="grid-item" :alt="item.alt_description"/> 
        
        </div>
     </div>
@@ -49,6 +49,7 @@ li{
     width: 350px;
     height: auto;
 }
+
 
 
     
