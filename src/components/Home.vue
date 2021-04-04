@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        search component 
+        <Search />
         <div class="randomPhotosGrid mt-5">
          <img class="grid-item" :key="item.id" v-for="item in test" :src="item.urls.regular"   :alt="item.alt_description"/> 
        </div>
@@ -25,6 +25,9 @@
 
 
 <script>
+import Search from './Search';
+
+
 export default {
     name: 'Home',
     data(){
@@ -34,7 +37,7 @@ export default {
     }
   },
   components: {
-    
+    Search
   },
   props: {
    test: Array

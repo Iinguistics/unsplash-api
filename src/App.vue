@@ -45,7 +45,7 @@ export default {
   },
   mounted(){
     //this.fetchSearchTermPhotos();
-    this.fetchRandomPhotos();
+    //this.fetchRandomPhotos();
     console.log(this.myTest)
   },
   updated(){
