@@ -1,14 +1,13 @@
 <template>
    <SearchBar @term-submitted="termSubmitted" />
-   <Home :test= myTest />
+  
    <router-view />
 </template>
 
 <script>
-import Home from './components/Home.vue'
 import SearchBar from './components/SearchBar'
 import axios from 'axios'
-import { key } from '../src/unsplashKey'
+import { key } from './unsplashKey'
 
 export default {
   name: 'App',
@@ -20,7 +19,6 @@ export default {
     }
   },
   components: {
-    Home,
     SearchBar
   },
   methods: {
