@@ -48,7 +48,7 @@ export default {
   }
   
   .form-input:focus{
-    box-shadow: 0 0 10px 4px #34495e;
+    box-shadow: 0 0 5px 2px #34495e;
   }
 
 
