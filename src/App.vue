@@ -1,18 +1,50 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Home :test= myTest />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Home from './components/Home.vue'
+import axios from 'axios'
 
 export default {
   name: 'App',
+  data(){
+    return{
+      myTest: []
+
+    }
+  },
   components: {
-    HelloWorld
+    Home
+  },
+  methods: {
+    
+   async fetchRandomPhotos(){
+     
+      const {data} = await axios.get('https://api.unsplash.com/search/photos?', {
+        params:{
+          query: 'london',
+          client_id: 'HPm13HgLp3IvxRUTJlllbzDN_SlCOcbOBnwJyJIA7g4'
+        }
+      });
+      this.myTest = data;
+    }
+  },
+  mounted(){
+    this.fetchRandomPhotos();
+    console.log(this.myTest)
+  },
+  updated(){
+    console.log(this.myTest.results);
   }
+
+  
+   
 }
 </script>
+
+
+
 
 <style>
 #app {
@@ -24,3 +56,4 @@ export default {
   margin-top: 60px;
 }
 </style>
+
