@@ -1,11 +1,12 @@
 <template>
-   <Search />
-  <Home :test= myTest />
+   <SearchBar @term-submitted="termSubmitted" />
+   <Home :test= myTest />
+   <router-view />
 </template>
 
 <script>
 import Home from './components/Home.vue'
-import Search from './components/Search'
+import SearchBar from './components/SearchBar'
 import axios from 'axios'
 import { key } from '../src/unsplashKey'
 
@@ -13,13 +14,14 @@ export default {
   name: 'App',
   data(){
     return{
-      myTest: []
+      myTest: [],
+      term: ''
 
     }
   },
   components: {
     Home,
-    Search
+    SearchBar
   },
   methods: {
     
@@ -43,6 +45,10 @@ export default {
       });
       this.myTest = data;
     },
+
+    termSubmitted(term){
+      console.log(term)
+    }
 
 
   },
