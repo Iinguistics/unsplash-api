@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="randomPhotosGrid mt-5">
-         <img class="grid-item" :key="item.id" v-for="item in test" :src="item.urls.regular"   :alt="item.alt_description"/> 
+         <img class="grid-item" :key="item.id" v-for="item in randomImages" :src="item.urls.regular"   :alt="item.alt_description"/> 
        </div>
 
       
@@ -24,21 +24,35 @@
 
 
 <script>
+import axios from 'axios'
+import { key } from '../unsplashKey'
 
 
 export default {
     name: 'Home',
     data(){
     return{
-      myTest: 'testing'
+     randomImages: []
 
     }
   },
   components: {
     
   },
-  props: {
-   test: Array
+  created(){
+    this.fetchRandomPhotos();
+  },
+
+  methods: {
+      async fetchRandomPhotos(){
+      const {data} = await axios.get('https://api.unsplash.com/photos', {
+        params:{
+          client_id: key,
+          per_page: 12
+        }
+      });
+      this.randomImages = data;
+    },
   }
     
 }

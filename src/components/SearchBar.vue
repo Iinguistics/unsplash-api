@@ -76,7 +76,9 @@ export default {
   }
 
   
-
+  i:hover{
+    cursor: pointer;
+  }
 
 
 

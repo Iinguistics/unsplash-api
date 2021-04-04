@@ -23,9 +23,7 @@ export default {
     termImages: []
      }
     },
-    props: {
-   term: String
-  },
+
   created(){
     this.fetchSearchTermPhotos();
   },
@@ -68,7 +66,6 @@ export default {
     transition:.3s;
     background-color:rgba(0,0,0,5);
     opacity: 0.8;
-
 }
 
 
