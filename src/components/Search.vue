@@ -1,8 +1,9 @@
 <template>
-    <div class="container">
-        search page
-       
-    </div>
+      <div class="container">
+        <div class="randomPhotosGrid mt-5">
+         <img class="grid-item" :key="item.id" v-for="item in termImages" :src="item.urls.regular"   :alt="item.alt_description"/> 
+       </div>
+      </div>
 </template>
 
 
@@ -20,8 +21,7 @@ export default {
     data(){
     return{
     termImages: []
-
-    }
+     }
     },
     props: {
    term: String
@@ -29,11 +29,9 @@ export default {
   created(){
     this.fetchSearchTermPhotos();
   },
-  mounted(){
-    console.log(this.$route.params.id)
-  },
+  
   updated(){
-      console.log(this.term, 'why')
+    this.fetchSearchTermPhotos();
   },
   methods: {
 
@@ -41,7 +39,8 @@ export default {
       const {data} = await axios.get('https://api.unsplash.com/search/photos?', {
         params:{
           query: this.$route.params.id,
-          client_id: key
+          client_id: key,
+          per_page: 12
         }
       });
       this.termImages = data.results;
@@ -55,7 +54,22 @@ export default {
 
 <style scoped>
 
+.randomPhotosGrid{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 15px 10px;
+}
 
+.grid-item {
+    width: 350px;
+    height: auto;
+}
+.grid-item:hover{
+    transition:.3s;
+    background-color:rgba(0,0,0,5);
+    opacity: 0.8;
+
+}
 
 
   
