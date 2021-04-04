@@ -2,14 +2,9 @@
     <div class="container">
         search component 
         <div class="randomPhotosGrid mt-5">
-            <div class="grid-item">testing</div>
-            <div class="grid-item">testing</div>
-            <div class="grid-item">testing</div>
-            <div class="grid-item">testing</div>
-            <div class="grid-item">testing</div>
-            <div class="grid-item">testing</div>
-        </div>
+             <img :key="item.id" v-for="item in test" :src="item.urls.regular"  class="grid-item"/> 
        
+       </div>
     </div>
 </template>
 
@@ -28,7 +23,7 @@ export default {
     
   },
   props: {
-   
+   test: Array
   }
     
 }
@@ -48,6 +43,11 @@ li{
     display: grid;
     grid-template-columns: auto auto auto;
     gap: 15px 10px;
+}
+
+.grid-item{
+    width: 350px;
+    height: auto;
 }
 
 

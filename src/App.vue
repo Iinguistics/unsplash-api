@@ -45,7 +45,7 @@ export default {
   },
   mounted(){
     //this.fetchSearchTermPhotos();
-    //this.fetchRandomPhotos();
+    this.fetchRandomPhotos();
     console.log(this.myTest)
   },
   updated(){
@@ -68,6 +68,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  margin-bottom: 60px;
   font-family: 'Arimo', sans-serif;
 }
 </style>
