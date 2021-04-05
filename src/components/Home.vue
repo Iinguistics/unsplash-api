@@ -1,23 +1,10 @@
 <template>
     <div class="container">
-        <div class="randomPhotosGrid mt-5">
-         <img class="grid-item" :key="item.id" v-for="item in randomImages" :src="item.urls.regular" :alt="item.alt_description"/> 
-         
-         
-         
-       </div>
-     
-     <!-- testing -->
        <div class="randomPhotosGrid mt-5">
               <div class="hover_img" :key="item.id" v-for="item in randomImages">
-            <div><span>{{item.id}}</span><img class="grid-item" :src="item.urls.regular" :alt="item.alt_description"/> </div>
-        </div>
-
+            <div><span>By {{item.user.username}}</span><a :href="item.links.download" target="_blank">Download</a><img class="grid-item" :src="item.urls.regular" :alt="item.alt_description"/></div>
+         </div>
        </div>
-    <!--  end -->
-
-
-
     </div>
 </template>
 
@@ -78,7 +65,6 @@ export default {
 .grid-item:hover{
     transition:.3s;
     background-color:rgba(0,0,0,5);
-    opacity: 0.8;
 }
 
 
@@ -86,19 +72,37 @@ export default {
     position:relative; 
 }
 
+.hover_img div a { 
+    position:absolute; 
+    display:none; 
+    z-index:99; 
+    top: 1%; 
+    left: 5%;
+}
+.hover_img div:hover a { 
+    color: #0385E6;
+    font-weight: 800;
+    display:block; 
+    background-color: #333;
+    padding: 12px;
+}
+
+
 .hover_img div span { 
     position:absolute; 
     display:none; 
     z-index:99; 
-    top: 50%; 
-    left: 40%;
+    bottom: 1%; 
+    left: 5%;
 }
 .hover_img div:hover span { 
-    color: #5409C8;
+    color: #0385E6;
     font-weight: 800;
     display:block; 
-    background-color:rgba(0,0,0,5);
+    background-color: #333;
+    padding: 12px;
 }
+
 
 
 
