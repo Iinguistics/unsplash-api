@@ -16,9 +16,6 @@
 
 
 
-
-
-
 <script>
 export default {
     name: 'SearchBar',
@@ -76,8 +73,6 @@ export default {
   i:hover{
     cursor: pointer;
   }
-
-
 
 
 

@@ -109,9 +109,6 @@ export default {
 
 
 
-
-
-
 @media(max-width: 767px) {
    .randomPhotosGrid{
     display: grid;
