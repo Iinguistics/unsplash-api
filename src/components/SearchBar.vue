@@ -8,7 +8,7 @@
             placeholder="Search high-resolution photos"
             class="form-input"
             />
-            <i class="fa fa-camera-retro" @click="termHandler"></i>
+            <i class="fa fa-camera-retro mt-1" @click="termHandler"></i>
         </form>
     </div>
 </template>

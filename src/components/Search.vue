@@ -1,5 +1,6 @@
 <template>
       <div class="container">
+          <div v-show="loading"><Spinner /></div>
        <div class="randomPhotosGrid mt-5">
               <div class="hover_img" :key="item.id" v-for="item in termImages">
             <div><a :href="'https://unsplash.com/@' + item.user.username" target="_blank" class="photographer">By {{item.user.username}}</a><a :href="item.links.download" target="_blank" class="download-img">Download</a><img class="grid-item" :src="item.urls.regular" :alt="item.alt_description"/></div>
@@ -17,14 +18,19 @@
 <script>
 import axios from 'axios'
 import { key } from '../unsplashKey'
+import Spinner from './Helpers/Spinner'
 
 export default {
     name: 'Search',
     data(){
     return{
-    termImages: []
+    termImages: [],
+    loading: true
      }
     },
+    components: {
+     Spinner
+  },
 
   created(){
     this.fetchSearchTermPhotos();
