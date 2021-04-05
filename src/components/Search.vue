@@ -1,7 +1,9 @@
 <template>
       <div class="container">
-        <div class="randomPhotosGrid mt-5">
-         <img class="grid-item" :key="item.id" v-for="item in termImages" :src="item.urls.regular"   :alt="item.alt_description"/> 
+       <div class="randomPhotosGrid mt-5">
+              <div class="hover_img" :key="item.id" v-for="item in termImages">
+            <div><a :href="'https://unsplash.com/@' + item.user.username" target="_blank" class="photographer">By {{item.user.username}}</a><a :href="item.links.download" target="_blank" class="download-img">Download</a><img class="grid-item" :src="item.urls.regular" :alt="item.alt_description"/></div>
+         </div>
        </div>
       </div>
 </template>
@@ -38,7 +40,7 @@ export default {
         params:{
           query: this.$route.params.id,
           client_id: key,
-          per_page: 12
+          per_page: 24
         }
       });
       this.termImages = data.results;
@@ -65,11 +67,56 @@ export default {
 .grid-item:hover{
     transition:.3s;
     background-color:rgba(0,0,0,5);
-    opacity: 0.8;
 }
 
 
-  
+
+.hover_img div { 
+    position:relative; 
+}
+
+.hover_img div .photographer { 
+    position:absolute; 
+    display:none; 
+    z-index:99; 
+    bottom: 1%; 
+    left: 5%;
+}
+.hover_img div:hover .photographer { 
+    color: #0385E6;
+    font-weight: 800;
+    display:block; 
+    background-color: #333;
+    padding: 12px;
+}
+
+
+.hover_img div .download-img { 
+    position:absolute; 
+    display:none; 
+    z-index:99; 
+    top: 1%; 
+    left: 5%;
+}
+.hover_img div:hover .download-img { 
+    color: #0385E6;
+    font-weight: 800;
+    display:block; 
+    background-color: #333;
+    padding: 12px;
+}
+
+
+
+
+
+@media(max-width: 767px) {
+   .randomPhotosGrid{
+    display: grid;
+    grid-template-columns: auto;
+   }
+
+}
 
   
 

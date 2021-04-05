@@ -28,9 +28,7 @@ export default {
 
     }
   },
-  updated(){
-      console.log(this.term)
-  },
+  
   methods: {
       termHandler(){
         //  this.$emit('term-submitted', this.term)

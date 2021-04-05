@@ -2,7 +2,7 @@
     <div class="container">
        <div class="randomPhotosGrid mt-5">
               <div class="hover_img" :key="item.id" v-for="item in randomImages">
-            <div><span>By {{item.user.username}}</span><a :href="item.links.download" target="_blank">Download</a><img class="grid-item" :src="item.urls.regular" :alt="item.alt_description"/></div>
+            <div><a :href="'https://unsplash.com/@' + item.user.username" target="_blank" class="photographer">By {{item.user.username}}</a><a :href="item.links.download" target="_blank" class="download-img">Download</a><img class="grid-item" :src="item.urls.regular" :alt="item.alt_description"/></div>
          </div>
        </div>
     </div>
@@ -29,16 +29,16 @@ export default {
   created(){
     this.fetchRandomPhotos();
   },
-  updated(){
-      console.log(this.randomImages)
-  },
+//   updated(){
+//       console.log(this.randomImages)
+//   },
 
   methods: {
       async fetchRandomPhotos(){
       const {data} = await axios.get('https://api.unsplash.com/photos', {
         params:{
           client_id: key,
-          per_page: 12
+          per_page: 24
         }
       });
       this.randomImages = data;
@@ -72,36 +72,40 @@ export default {
     position:relative; 
 }
 
-.hover_img div a { 
-    position:absolute; 
-    display:none; 
-    z-index:99; 
-    top: 1%; 
-    left: 5%;
-}
-.hover_img div:hover a { 
-    color: #0385E6;
-    font-weight: 800;
-    display:block; 
-    background-color: #333;
-    padding: 12px;
-}
 
 
-.hover_img div span { 
+.hover_img div .photographer { 
     position:absolute; 
     display:none; 
     z-index:99; 
     bottom: 1%; 
     left: 5%;
 }
-.hover_img div:hover span { 
+.hover_img div:hover .photographer { 
     color: #0385E6;
     font-weight: 800;
     display:block; 
     background-color: #333;
     padding: 12px;
 }
+
+
+.hover_img div .download-img { 
+    position:absolute; 
+    display:none; 
+    z-index:99; 
+    top: 1%; 
+    left: 5%;
+}
+.hover_img div:hover .download-img { 
+    color: #0385E6;
+    font-weight: 800;
+    display:block; 
+    background-color: #333;
+    padding: 12px;
+}
+
+
 
 
 
