@@ -33,10 +33,9 @@ export default {
   },
   methods: {
       termHandler(){
-          this.$emit('term-submitted', this.term)
+        //  this.$emit('term-submitted', this.term)
         //  this.$router.push({ name: "Search", params: { term: this.term } })
         this.$router.push(`/search/${this.term}`)
-       console.log(`the term ${this.term} has been submitted`);
       }
   }
     

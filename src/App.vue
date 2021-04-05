@@ -1,5 +1,5 @@
 <template>
-   <SearchBar @term-submitted="termSubmitted" />
+   <SearchBar />
    <router-view />
 </template>
 
