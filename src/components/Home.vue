@@ -2,7 +2,8 @@
     <div class="container">
        <div class="randomPhotosGrid mt-5">
               <div class="hover_img" :key="item.id" v-for="item in randomImages">
-            <div><a :href="'https://unsplash.com/@' + item.user.username" target="_blank" class="photographer">By {{item.user.username}}</a><a :href="item.links.download" target="_blank" class="download-img">Download</a><img class="grid-item" :src="item.urls.regular" :alt="item.alt_description"/></div>
+            <div><a :href="'https://unsplash.com/@' + item.user.username" target="_blank" class="photographer">By {{item.user.username}}</a>
+            <a :href="item.links.download" target="_blank" class="download-img">Download</a><img class="grid-item" :src="item.urls.regular" :alt="item.alt_description"/></div>
          </div>
        </div>
     </div>

@@ -7,9 +7,11 @@
             type="text" 
             placeholder="Search high-resolution photos"
             class="form-input"
+            minlength="1"
             />
             <i class="fa fa-camera-retro mt-1" @click="termHandler"></i>
         </form>
+        <h5>{{error}}</h5>
     </div>
 </template>
 
@@ -21,7 +23,8 @@ export default {
     name: 'SearchBar',
     data(){
     return{
-      term: ''
+      term: '',
+      error: ''
 
     }
   },
@@ -30,7 +33,12 @@ export default {
       termHandler(){
         //  this.$emit('term-submitted', this.term)
         //  this.$router.push({ name: "Search", params: { term: this.term } })
-        this.$router.push(`/search/${this.term}`)
+        if(this.term === ''){
+          this.error = 'Please enter at least one character';
+          return;
+        } 
+        this.error = '';
+        this.$router.push(`/search/${this.term}`);
       }
   }
     

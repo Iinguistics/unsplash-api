@@ -18,9 +18,7 @@ import { key } from '../unsplashKey'
 import Spinner from './Helpers/Spinner'
 
 export default {
-    setup(){
-     
-    },
+    
     name: 'Search',
     data(){
     return{
@@ -38,10 +36,6 @@ export default {
     this.fetchSearchTermPhotos();
   },
  
-  
-//   updated(){
-//     //this.fetchSearchTermPhotos();
-//   },
 
   
   methods: {
